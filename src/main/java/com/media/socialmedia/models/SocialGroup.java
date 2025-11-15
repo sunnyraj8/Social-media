@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -19,5 +20,9 @@ public class SocialGroup {
 
     @ManyToMany(mappedBy = "socialGroups")
     private Set<SocialUser> socialUsers=new HashSet<>();
+    @Override
+    public int hashCode(){
+        return Objects.hash(id);
+    }
 }
 

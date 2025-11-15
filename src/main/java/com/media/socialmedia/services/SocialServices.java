@@ -1,17 +1,21 @@
 package com.media.socialmedia.services;
 
 import com.media.socialmedia.models.SocialUser;
+import com.media.socialmedia.repositories.SocialUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class SocialServices {
-    public List<SocialUser> getusers() {
-        return null;
+    @Autowired
+    SocialUserRepository socialUserRepository;
+    public List<SocialUser> getAllusers() {
+        return socialUserRepository.findAll();
     }
 
-    public SocialUser saveUser() {
-        return null;
+    public SocialUser saveUser(SocialUser socialUser) {
+        return socialUserRepository.save(socialUser);
     }
 }
