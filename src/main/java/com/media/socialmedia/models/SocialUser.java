@@ -15,7 +15,7 @@ public class SocialUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(mappedBy = "socialUser")
+    @OneToOne(mappedBy = "socialUser",cascade = CascadeType.ALL)
     //@JoinColumn(name = "social_profile")
     private SocialProfile socialProfile;
     @OneToMany(mappedBy = "socialUser")
@@ -28,4 +28,13 @@ public class SocialUser {
     public int hashCode(){
         return Objects.hash(id);
     }
+
+    public void setSocialProfile(SocialProfile socialProfile) {
+        this.socialProfile = socialProfile;
+
+        if (socialProfile.getSocialUser() != this) { // avoid loop
+            socialProfile.setSocialUser(this);
+        }
+    }
+
 }
