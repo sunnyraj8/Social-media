@@ -87,6 +87,14 @@ public class DataInitializer {
             socialProfileRepository.save(profile1);
             socialProfileRepository.save(profile2);
             socialProfileRepository.save(profile3);
+
+            //FETCH TYPES
+            //fetch types are used to show how data is fetched from database.
+            //there are two types of fetchtype - Eager & -Lazy
+            // these fetch types are used where the relationship is initialised --example--{@ManyToMany(fetch= FetchType.EAGER)}
+            //Default fetch types are: onetoone-Lazy, ManyToOne-Eager, Manytomany-Lazy, OneToOne-Eager
+            System.out.println("FETCHING DATA.............");
+            socialuserRepository.findById(1L);
         };
     }
 }
